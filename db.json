@@ -1,0 +1,19 @@
+{
+    "getUsers": [
+     {
+       "id": "abc1",
+       "password": "prasanth",
+       "email": "prasanth@example.com"
+     },
+     {
+       "id": "abc2",
+       "password": "manikandan",
+       "email": "manikandan@example.com"
+     },
+     {
+         "id": "abc3",
+         "password": "raju",
+         "email": "raju@example.com"
+       }
+   ] 
+ }
