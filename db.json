@@ -1,5 +1,5 @@
 {
-    "getUsers": [
+    "login": [
      {
        "id": "abc1",
        "password": "prasanth",
@@ -15,5 +15,45 @@
          "password": "raju",
          "email": "raju@example.com"
        }
-   ] 
+   ] ,
+   "Books": [
+    {
+      "bookid": 1,
+      "title": "Data science",
+      "author": "Mani",
+      "category": "Computer",
+      "status": "Borrowed",
+      "renewDate": "2025-04-15T10:00:00Z"
+    },
+    {
+      "bookid": 2,
+      "title": "Maths",
+      "author": "Mathan kumar",
+      "category": "Maths",
+      "status": "Available"
+    },
+    {
+      "bookid": 3,
+      "title": "Automation",
+      "author": "Rahul",
+      "category": "Engineering",
+      "status": "Overdue",
+      "renewDate": "2025-04-05T14:30:00Z"
+    },
+    {
+      "bookid": 4,
+      "title": "Web Development",
+      "author": "Priya Sharma",
+      "category": "Computer",
+      "status": "Borrowed",
+      "renewDate": "2025-04-22T18:00:00+05:30"
+    },
+    {
+      "bookid": 5,
+      "title": "Quantum Physics",
+      "author": "Aravind Patel",
+      "category": "Science",
+      "status": "Available"
+    }
+  ]
  }
