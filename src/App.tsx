@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import './App.css'
-import Login from './pages/Auth/Login'
-function App() {
-
-  
-  return (
-    <>
-     <Login/>
-=======
 import "./App.css";
 import Login from "./pages/Auth/Login";
 import Home from "./pages/Dashboard/Home";
@@ -23,7 +13,6 @@ function App() {
           <Route path="/" element={<Login />} />
         </Routes>
       </Router>
->>>>>>> ea345b0de06738afa328caa226ea7aceb0c390d9
     </>
   );
 }
