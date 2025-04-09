@@ -1,5 +1,5 @@
 {
-    "getUsers": [
+    "login": [
      {
        "id": "abc1",
        "password": "prasanth",
