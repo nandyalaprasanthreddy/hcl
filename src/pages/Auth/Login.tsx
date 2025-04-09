@@ -4,18 +4,29 @@ import TextInput from "../../components/TextInput";
 import Button from "../../components/Button";
 import PageLayout from "../../components/PageLayout";
 import { axiosInstance } from "../../utils/axiosInstance";
-
+import { localStorageSetup } from "../../utils/localStorage";
 
 type Values = {
   email: string;
   password: string;
+  id?: string;
 };
 const Login = () => {
-  
-const handlelogin =async(values:Values)=>{
-  const response = await axiosInstance.get("/login")
-  console.log(response,values);
-}
+  const handlelogin = async (values: Values) => {
+    const response = await axiosInstance.get("/login");
+    console.log(response.data, values);
+    if (response.data.length > 0) {
+      const a = response?.data?.filter(
+        (user: Values) =>
+          user.email === values.email && user.password === values.password
+      );
+      if (a.length > 0) {
+        localStorageSetup(a[0]);
+      } else {
+        alert("User not found");
+      }
+    }
+  };
   const InitialValues = {
     email: "",
     password: "",
@@ -33,7 +44,7 @@ const handlelogin =async(values:Values)=>{
     values: Values,
     { resetForm }: { resetForm: () => void }
   ) => {
-    handlelogin(values)
+    handlelogin(values);
     resetForm();
   };
 
