@@ -9,6 +9,7 @@ export const localStorageSetup = (values:LocalStorgaeProps) => {
   localStorage.setItem("user",JSON.stringify(values))
 };
 
-export const localStorageGetUser = ()=>{
-    return localStorage.getItem("user")
-}
+export const localStorageGetUser = () => {
+  const user = localStorage.getItem("user");
+  return user ? JSON.parse(user) : null;
+};
