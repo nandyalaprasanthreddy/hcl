@@ -1,5 +1,6 @@
 import { Formik, Form } from "formik";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 import TextInput from "../../components/TextInput";
 import Button from "../../components/Button";
 import PageLayout from "../../components/PageLayout";
@@ -12,6 +13,7 @@ type Values = {
   id?: string;
 };
 const Login = () => {
+  const navigate = useNavigate()
   const handlelogin = async (values: Values) => {
     const response = await axiosInstance.get("/login");
     console.log(response.data, values);
@@ -22,6 +24,7 @@ const Login = () => {
       );
       if (a.length > 0) {
         localStorageSetup(a[0]);
+        navigate('/home')
       } else {
         alert("User not found");
       }
