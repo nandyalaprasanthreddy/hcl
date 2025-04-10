@@ -55,5 +55,21 @@
       "category": "Science",
       "status": "Available"
     }
+  ],
+  "userBorrowedBooks": [
+    {
+      "id": "1629",
+      "title": "Building Democracy for All",
+      "returnDate": "2025-04-06",
+      "book_status": "Borrowed",
+      "userId": "abc3"
+    },
+    {
+      "id": "60a2",
+      "title": "HP",
+      "returnDate": "2025-04-07",
+      "book_status": "Borrowed",
+      "userId": "abc3"
+    }
   ]
 }
