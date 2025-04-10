@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Book } from "../../types/searchbook";
-
-const API_URL = "http://localhost:4000/Books"; 
+import { axiosInstance } from "../../utils/axiosInstance";
 
 const BookSearch: React.FC = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<Book[]>([]);
+  const [allBooks, setAllBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -16,12 +16,13 @@ const BookSearch: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(API_URL);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        const response = await axiosInstance.get("/Books");
+        console.log(response.data);
+        if (response.data.length > 0) {
+          const data: Book[] = response.data;
+          setSearchResults(data);
+          setAllBooks(data);
         }
-        const data: Book[] = await response.json();
-        setSearchResults(data);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (err: any) {
         setError(err.message);
@@ -31,22 +32,22 @@ const BookSearch: React.FC = () => {
     };
 
     fetchBooks();
-  }, []); 
+  }, []);
   const handleBorrowButtonClick = () => {
-    navigate("/borrow"); 
+    navigate("/borrow");
   };
   const handleReturnButtonClick = () => {
-    navigate("/return"); 
+    navigate("/return");
   };
+
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setSearchTerm(event.target.value);
-  };
+    const newSearchTerm = event.target.value;
+    setSearchTerm(newSearchTerm);
 
-  const handleSearch = () => {
-    const lowerCaseSearchTerm = searchTerm.toLowerCase();
-    const results = searchResults.filter(
+    const lowerCaseSearchTerm = newSearchTerm.toLowerCase();
+    const results = allBooks.filter(
       (book) =>
         book.title.toLowerCase().includes(lowerCaseSearchTerm) ||
         book.author.toLowerCase().includes(lowerCaseSearchTerm) ||
@@ -77,12 +78,6 @@ const BookSearch: React.FC = () => {
           value={searchTerm}
           onChange={handleSearchInputChange}
         />
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          onClick={handleSearch}
-        >
-          Search
-        </button>
       </div>
       {searchResults.length > 0 ? (
         <div className="overflow-x-auto">
