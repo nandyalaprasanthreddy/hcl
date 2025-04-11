@@ -3,7 +3,6 @@ import React, { useState, useEffect, ChangeEvent } from "react";
 import { Book } from "../../types/searchbook";
 import { axiosInstance } from "../../utils/axiosInstance";
 
-
 const BookSearch: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<Book[]>([]);
@@ -217,7 +216,6 @@ const BookSearch: React.FC = () => {
             </div>
             <br></br>
           </div>
-          
         </div>
       ) : (
         <p className="text-gray-700">

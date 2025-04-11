@@ -71,5 +71,13 @@
       "book_status": "Borrowed",
       "userId": "abc3"
     }
+  ],
+  "BookTableHeader": [
+    { "key": "bookid", "header": "Book ID" },
+    { "key": "title", "header": "Title" },
+    { "key": "author", "header": "Author" },
+    { "key": "category", "header": "Category" },
+    { "key": "status", "header": "Status" },
+    { "key": "renewDate", "header": "Renew Date" }
   ]
 }
